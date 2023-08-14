@@ -9,8 +9,14 @@ const getTasks = async function() {
     return res;
 }
 
+const getTaskById = async function(id) {
+    const res = await db.one(`SELECT * FROM tasks WHERE id = ${id}`);
+    return res;
+}
+
 const tasks = {
     getTasks,
+    getTaskById
 };
 
 export default tasks;

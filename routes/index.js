@@ -7,4 +7,9 @@ router.get('/', async function(req, res) {
     res.status(200).json(taskList);
 });
 
+router.get('/:id', async function(req, res) {
+    const task = await tasks.getTaskById(req.params.id);
+    res.status(200).json(task);
+})
+
 export default router;
