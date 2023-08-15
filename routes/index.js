@@ -25,7 +25,7 @@ router.get('/:id', async function(req, res) {
 // post
 router.post('/', async function(req, res) {
     try {
-        const id = await tasks.addTask(req.body.name);
+        const id = await tasks.postTask(req.body.name);
         res.status(200).send(id);
     }
     catch (error) {
@@ -34,6 +34,15 @@ router.post('/', async function(req, res) {
 })
 
 // put
+router.put('/:id', async function(req, res) {
+    try {
+        const id = await tasks.putTask(req.params.id, req.body.name, req.body.status);
+        res.status(200).send(id);
+    }
+    catch (error) {
+        res.status(error.status || 500).send({ message: error.message });
+    }
+})
 
 // delete
 
