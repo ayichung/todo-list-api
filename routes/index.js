@@ -12,4 +12,10 @@ router.get('/:id', async function(req, res) {
     res.status(200).json(task);
 })
 
+// post
+
+// put
+
+// delete
+
 export default router;

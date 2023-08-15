@@ -12,6 +12,7 @@ const __dirname = path.dirname(__filename);
 import router from './routes/index.js';
 
 // response chain
+app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/', router);
 app.use(function(req, res, next) {
     next(createError(404));
