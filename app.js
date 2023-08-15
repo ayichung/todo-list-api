@@ -1,7 +1,9 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import multer from 'multer';
 const app = express();
+const upload = multer();
 const port = 8080;
 
 // dirname setup
@@ -12,6 +14,7 @@ const __dirname = path.dirname(__filename);
 import router from './routes/index.js';
 
 // response chain
+app.use(upload.none());
 app.get('/favicon.ico', (req, res) => res.status(204));
 app.use('/', router);
 app.use(function(req, res, next) {

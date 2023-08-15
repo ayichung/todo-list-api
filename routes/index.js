@@ -23,6 +23,15 @@ router.get('/:id', async function(req, res) {
 })
 
 // post
+router.post('/', async function(req, res) {
+    try {
+        const id = await tasks.addTask(req.body.name);
+        res.status(200).send(id);
+    }
+    catch (error) {
+        res.status(error.status || 500).send({ message: error.message });
+    }
+})
 
 // put
 

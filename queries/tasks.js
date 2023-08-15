@@ -14,9 +14,15 @@ const getTaskById = async function(id) {
     return res;
 }
 
+const addTask = async function(name) {
+    const res = await db.one(`INSERT INTO tasks (name) VALUES ('${name}') RETURNING id`);
+    return res;
+}
+
 const tasks = {
     getTasks,
-    getTaskById
+    getTaskById,
+    addTask
 };
 
 export default tasks;
