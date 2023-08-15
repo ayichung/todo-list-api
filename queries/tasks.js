@@ -25,7 +25,8 @@ const putTask = async (id, name, status) => {
 }
 
 const deleteTask = async function(id) {
-
+    const res = await db.one('DELETE FROM tasks WHERE id = $1 RETURNING id', [id]);
+    return res;
 }
 
 const tasks = {
